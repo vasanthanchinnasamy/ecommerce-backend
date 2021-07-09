@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ECommerceApplication {
 
 	public static void main(String[] args) {
-		System.out.println("check");
 		SpringApplication.run(ECommerceApplication.class, args);
 	}
 

@@ -3,10 +3,18 @@ package com.innovate.dto;
 import java.util.UUID;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.innovate.model.Product;
+import com.innovate.model.Shop;
 
 public class ProductDto {
+	
+	UUID productId;	
+	
+	@NotEmpty(message = "shopId name must not be empty")
+	@NotNull(message = "shopId name must not be null")
+	UUID shopId;
 	
 	@NotEmpty(message = "Product name must not be empty")
 	String productName;
@@ -35,11 +43,32 @@ public class ProductDto {
 		this.productName = productName;
 		this.productDescription = productDescription;
 	}
+	
+	public UUID getProductId() {
+		return productId;
+	}
+
+	public void setProductId(UUID productId) {
+		this.productId = productId;
+	}
+	
+
+	public UUID getShopId() {
+		return shopId;
+	}
+
+	public void setShopId(UUID shopId) {
+		this.shopId = shopId;
+	}
 
 	public ProductDto() {}
 
 	public Product convertToProduct(ProductDto productDto) {
-		return new Product(UUID.randomUUID(), productDto.getProductName(), productDto.getProductDescription());
+		Product convertedProduct = new Product(UUID.randomUUID(), productDto.getProductName(), productDto.getProductDescription());
+		Shop shop = new Shop();
+		shop.setShopId(productDto.getShopId());
+		convertedProduct.setShop(shop);
+		return convertedProduct;
 	}
 	
 	

@@ -8,6 +8,8 @@ import com.innovate.model.Shop;
 
 public class ShopDto {
 	
+	UUID shopId;
+	
 	@NotEmpty(message = "Shop name must not be empty")
 	String shopName;
 	
@@ -30,6 +32,18 @@ public class ShopDto {
 	public void setShopDescription(String shopDescription) {
 		this.shopDescription = shopDescription;
 	}
+	
+	
+
+	public UUID getShopId() {
+		return shopId;
+	}
+
+
+	public void setShopId(UUID shopId) {
+		this.shopId = shopId;
+	}
+
 
 	public Shop convertToShop(ShopDto shopDto) {
 		return new Shop(UUID.randomUUID(),shopDto.getShopName(),shopDto.getShopDescription());
