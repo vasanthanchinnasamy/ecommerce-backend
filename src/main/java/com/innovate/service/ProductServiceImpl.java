@@ -24,6 +24,11 @@ public class ProductServiceImpl implements ProductService{
 	public Iterable<Product> getProducts() {
 		return productRepository.findAll();
 	}
+	
+	@Override
+	public Iterable<Product> getProducts(UUID shopId) {
+		return productRepository.findByShopShopId(shopId);
+	}
 
 	@Override
 	public void removeProduct(UUID productId) {
@@ -37,5 +42,7 @@ public class ProductServiceImpl implements ProductService{
 		Product product = new Product(productDto.getProductId(), productDto.getProductName(), productDto.getProductDescription());
 		return productRepository.save(product);
 	}
+
+
 
 }

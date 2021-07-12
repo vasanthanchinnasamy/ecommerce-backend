@@ -11,6 +11,8 @@ public interface ProductService {
 	
 	public Iterable<Product> getProducts();
 	
+	public Iterable<Product> getProducts(UUID shopId);
+	
 	public void removeProduct(UUID productId);
 	
 	public Product updateProduct(ProductDto productDto);
