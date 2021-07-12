@@ -37,4 +37,9 @@ public class ShopServiceImpl implements ShopService{
 		Shop deleteShop = new Shop(shopDto.getShopId(), shopDto.getShopName(), shopDto.getShopDescription());
 		return shopRepository.save(deleteShop);
 	}
+
+	@Override
+	public Shop get(UUID shopId) {
+		return shopRepository.findById(shopId).orElseGet(null);
+	}
 }

@@ -15,5 +15,7 @@ public interface ShopService {
 	
 	public Shop updateShop(ShopDto shopDto);
 	
+	public Shop get(UUID shopId);
+	
 
 }
