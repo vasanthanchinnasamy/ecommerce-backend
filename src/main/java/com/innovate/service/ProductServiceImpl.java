@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.innovate.dto.ProductDto;
 import com.innovate.model.Product;
+import com.innovate.model.Shop;
 import com.innovate.repository.ProductRepository;
 
 @Service
@@ -40,6 +41,9 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public Product updateProduct(ProductDto productDto) {
 		Product product = new Product(productDto.getProductId(), productDto.getProductName(), productDto.getProductDescription());
+		Shop shop = new Shop();
+		shop.setShopId(productDto.getShopId());
+		product.setShop(shop);
 		return productRepository.save(product);
 	}
 
