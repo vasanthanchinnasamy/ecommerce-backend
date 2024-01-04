@@ -4,8 +4,5 @@ env: flex
 #  jdk: openjdk8
 env_variables:
   SPRING_PROFILES_ACTIVE: "gcp,postgres"
-handlers:
-  - "https://mvnrepository.com/search?q=": /.*
-    script: this field is required, but ignored
 manual_scaling:
   instances: 1
