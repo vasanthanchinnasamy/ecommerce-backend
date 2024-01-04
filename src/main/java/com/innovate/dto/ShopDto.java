@@ -2,7 +2,7 @@ package com.innovate.dto;
 
 import java.util.UUID;
 
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 
 import com.innovate.model.Shop;
 
