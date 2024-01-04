@@ -1,7 +1,7 @@
-runtime: java
-#env: flex
-runtime_config:
-  jdk: openjdk17
+runtime: java17
+env: standard
+#runtime_config:
+#  jdk: openjdk17
 env_variables:
   SPRING_PROFILES_ACTIVE: "gcp,postgres"
 manual_scaling:
