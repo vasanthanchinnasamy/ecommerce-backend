@@ -27,23 +27,18 @@ public class ProductServiceImpl implements ProductService{
 	}
 	
 	@Override
-	public Iterable<Product> getProducts(UUID shopId) {
+	public Iterable<Product> getProductsByShopId(UUID shopId) {
 		return productRepository.findByShopShopId(shopId);
 	}
 
 	@Override
 	public void removeProduct(UUID productId) {
-		Product deleteProduct = new Product();
-		deleteProduct.setProductId(productId);
-		productRepository.delete(deleteProduct);
+		productRepository.deleteById(productId);
 	}
 
 	@Override
 	public Product updateProduct(ProductDto productDto) {
-		Product product = new Product(productDto.getProductId(), productDto.getProductName(), productDto.getProductDescription());
-		Shop shop = new Shop();
-		shop.setShopId(productDto.getShopId());
-		product.setShop(shop);
+		Product product = productDto.convertToProduct(false);
 		return productRepository.save(product);
 	}
 

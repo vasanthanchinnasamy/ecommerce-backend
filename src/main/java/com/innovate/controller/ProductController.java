@@ -35,12 +35,12 @@ public class ProductController {
 	
 	@GetMapping("/getByShop/{shopId}")
 	public ResponseEntity<Iterable<Product>> getByShop(@PathVariable UUID shopId){
-		return new ResponseEntity<>(productService.getProducts(shopId),HttpStatus.OK);
+		return new ResponseEntity<>(productService.getProductsByShopId(shopId),HttpStatus.OK);
 	}
 	
 	@PostMapping("/add")
 	public ResponseEntity<Product> add(@RequestBody ProductDto productDto){
-		return new ResponseEntity<>(productService.addProduct(productDto.convertToProduct(productDto)),HttpStatus.OK);
+		return new ResponseEntity<>(productService.addProduct(productDto.convertToProduct(true)),HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/remove")

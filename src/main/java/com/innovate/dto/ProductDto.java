@@ -1,5 +1,6 @@
 package com.innovate.dto;
 
+import java.util.Optional;
 import java.util.UUID;
 
 import jakarta.validation.constraints.NotEmpty;
@@ -63,10 +64,11 @@ public class ProductDto {
 
 	public ProductDto() {}
 
-	public Product convertToProduct(ProductDto productDto) {
-		Product convertedProduct = new Product(UUID.randomUUID(), productDto.getProductName(), productDto.getProductDescription());
+	public Product convertToProduct(boolean generateProductId) {
+		Product convertedProduct = new Product(generateProductId ? UUID.randomUUID() : this.getProductId(),
+				this.getProductName(), this.getProductDescription());
 		Shop shop = new Shop();
-		shop.setShopId(productDto.getShopId());
+		shop.setShopId(this.getShopId());
 		convertedProduct.setShop(shop);
 		return convertedProduct;
 	}
