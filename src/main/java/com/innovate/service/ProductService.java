@@ -1,8 +1,10 @@
 package com.innovate.service;
 
+import java.util.List;
 import java.util.UUID;
 
 import com.innovate.dto.ProductDto;
+import com.innovate.entity.ProductInfo;
 import com.innovate.model.Product;
 
 public interface ProductService {
@@ -11,7 +13,7 @@ public interface ProductService {
 	
 	public Iterable<Product> getProducts();
 	
-	public Iterable<Product> getProductsByShopId(UUID shopId);
+	public List<ProductInfo> getProductsByShopId(UUID shopId);
 	
 	public void removeProduct(UUID productId);
 	

@@ -1,13 +1,14 @@
 package com.innovate.service;
 
+import java.util.List;
 import java.util.UUID;
 
+import com.innovate.entity.ProductInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.innovate.dto.ProductDto;
 import com.innovate.model.Product;
-import com.innovate.model.Shop;
 import com.innovate.repository.ProductRepository;
 
 @Service
@@ -27,8 +28,9 @@ public class ProductServiceImpl implements ProductService{
 	}
 	
 	@Override
-	public Iterable<Product> getProductsByShopId(UUID shopId) {
-		return productRepository.findByShopShopId(shopId);
+	public List<ProductInfo> getProductsByShopId(UUID shopId) {
+		List<ProductInfo> productList = productRepository.findProductsWithMinPriceAndCountByShopId(shopId);
+		return productList;
 	}
 
 	@Override

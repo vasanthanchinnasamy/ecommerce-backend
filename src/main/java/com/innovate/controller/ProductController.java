@@ -1,7 +1,9 @@
 package com.innovate.controller;
 
+import java.util.List;
 import java.util.UUID;
 
+import com.innovate.entity.ProductInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +36,7 @@ public class ProductController {
 	}
 	
 	@GetMapping("/getByShop/{shopId}")
-	public ResponseEntity<Iterable<Product>> getByShop(@PathVariable UUID shopId){
+	public ResponseEntity<List<ProductInfo>> getByShop(@PathVariable UUID shopId){
 		return new ResponseEntity<>(productService.getProductsByShopId(shopId),HttpStatus.OK);
 	}
 	
