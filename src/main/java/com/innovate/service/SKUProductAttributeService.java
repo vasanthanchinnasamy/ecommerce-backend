@@ -1,12 +1,13 @@
 package com.innovate.service;
 
+import com.innovate.dto.SKUProductAttributeDto;
 import com.innovate.model.SKUProductAttribute;
 
 public interface SKUProductAttributeService {
 
-    SKUProductAttribute addSKUProductAttribute(SKUProductAttribute skuProductAttribute);
+    SKUProductAttribute addSKUProductAttribute(SKUProductAttributeDto skuProductAttributeDto);
 
     Iterable<SKUProductAttribute> getAllSKUProductAttributes();
 
-    void removeSKUProductAttribute(SKUProductAttribute skuProductAttribute);
+    void removeSKUProductAttribute(SKUProductAttributeDto skuProductAttributeDto);
 }

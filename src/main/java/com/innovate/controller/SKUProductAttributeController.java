@@ -1,5 +1,6 @@
 package com.innovate.controller;
 
+import com.innovate.dto.SKUProductAttributeDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,13 +23,13 @@ public class SKUProductAttributeController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<SKUProductAttribute> add(@RequestBody SKUProductAttribute skuProductAttribute) {
-        return new ResponseEntity<>(skuProductAttributeService.addSKUProductAttribute(skuProductAttribute), HttpStatus.OK);
+    public ResponseEntity<SKUProductAttribute> add(@RequestBody SKUProductAttributeDto skuProductAttributeDto) {
+        return new ResponseEntity<>(skuProductAttributeService.addSKUProductAttribute(skuProductAttributeDto), HttpStatus.OK);
     }
 
     @DeleteMapping("/remove")
-    public ResponseEntity<Void> remove(@RequestBody SKUProductAttribute skuProductAttribute) {
-        skuProductAttributeService.removeSKUProductAttribute(skuProductAttribute);
+    public ResponseEntity<Void> remove(@RequestBody SKUProductAttributeDto skuProductAttributeDto) {
+        skuProductAttributeService.removeSKUProductAttribute(skuProductAttributeDto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

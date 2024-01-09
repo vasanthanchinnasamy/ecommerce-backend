@@ -1,5 +1,6 @@
 package com.innovate.service;
 
+import com.innovate.dto.SKUProductAttributeDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +14,8 @@ public class SKUProductAttributeServiceImpl implements SKUProductAttributeServic
     private SKUProductAttributeRepository skuProductAttributeRepository;
 
     @Override
-    public SKUProductAttribute addSKUProductAttribute(SKUProductAttribute skuProductAttribute) {
-        return skuProductAttributeRepository.save(skuProductAttribute);
+    public SKUProductAttribute addSKUProductAttribute(SKUProductAttributeDto skuProductAttributeDto) {
+        return skuProductAttributeRepository.save(skuProductAttributeDto.toSKUProductAttribute());
     }
 
     @Override
@@ -23,7 +24,7 @@ public class SKUProductAttributeServiceImpl implements SKUProductAttributeServic
     }
 
     @Override
-    public void removeSKUProductAttribute(SKUProductAttribute skuProductAttribute) {
-        skuProductAttributeRepository.delete(skuProductAttribute);
+    public void removeSKUProductAttribute(SKUProductAttributeDto skuProductAttributeDto) {
+        skuProductAttributeRepository.delete(skuProductAttributeDto.toSKUProductAttribute());
     }
 }
