@@ -44,6 +44,10 @@ public class ProductServiceImpl implements ProductService{
 		return productRepository.save(product);
 	}
 
+	@Override
+	public Product getProduct(UUID productId) {
+		return productRepository.findById(productId).orElseGet(null);
+	}
 
 
 }
