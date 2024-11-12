@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 import com.innovate.model.SKUProductAttribute;
 import com.innovate.repository.SKUProductAttributeRepository;
 
+import java.util.List;
+import java.util.UUID;
+
 @Service
 public class SKUProductAttributeServiceImpl implements SKUProductAttributeService {
 
@@ -26,5 +29,10 @@ public class SKUProductAttributeServiceImpl implements SKUProductAttributeServic
     @Override
     public void removeSKUProductAttribute(SKUProductAttributeDto skuProductAttributeDto) {
         skuProductAttributeRepository.delete(skuProductAttributeDto.toSKUProductAttribute());
+    }
+
+    @Override
+    public List<SKUProductAttribute> getSKUProductAttributesByProduct(UUID productId) {
+        return skuProductAttributeRepository.findByProductId(productId);
     }
 }

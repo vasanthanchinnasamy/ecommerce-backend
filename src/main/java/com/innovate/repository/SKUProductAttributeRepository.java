@@ -28,4 +28,8 @@ public interface SKUProductAttributeRepository extends CrudRepository<SKUProduct
 
     // Custom method to find SKUProductAttribute by SKU ID and attribute ID
     Optional<SKUProductAttribute> findBySkuSkuIdAndAttributeAttributeId(UUID skuId, UUID attributeId);
+
+    // Custom query to retrieve SKUProductAttribute based on productId
+    @Query("SELECT spa FROM SKUProductAttribute spa JOIN FETCH spa.sku s JOIN FETCH spa.attribute a JOIN FETCH spa.attributeValue av WHERE s.product.productId = :productId")
+    List<SKUProductAttribute> findByProductId(UUID productId);
 }

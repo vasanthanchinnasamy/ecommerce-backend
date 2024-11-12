@@ -3,8 +3,12 @@ package com.innovate.controller;
 import java.util.UUID;
 
 import com.innovate.dto.ProductAttributeDto;
+import com.innovate.model.Order;
+import com.innovate.model.OrderKey;
 import com.innovate.model.ProductAttribute;
+import com.innovate.repository.OrderRepository;
 import com.innovate.service.ProductAttributeService;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,9 +31,21 @@ public class ProductAttributeController {
     @Autowired
     private ProductAttributeService productAttributeService;
 
+    @Autowired
+    private OrderRepository orderRepository;
+
     @GetMapping("/getAll")
     public ResponseEntity<Iterable<ProductAttribute>> getAll() {
         return new ResponseEntity<>(productAttributeService.getProductAttributes(), HttpStatus.OK);
+    }
+
+    @GetMapping("/getOrder")
+    public ResponseEntity<Iterable<Order>> getAllOrder() {
+        Order order = new Order();
+        OrderKey orderKey = new OrderKey(1l,2l);
+        order.setOrderKey(orderKey);
+        orderRepository.save(order);
+        return new ResponseEntity<>(orderRepository.findAll(), HttpStatus.OK);
     }
 
 //    @GetMapping("/getByCategory/{category}")

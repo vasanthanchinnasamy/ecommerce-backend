@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import com.innovate.model.SKUProductAttribute;
 import com.innovate.service.SKUProductAttributeService;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/skuProductAttribute")
 @CrossOrigin
@@ -31,5 +33,10 @@ public class SKUProductAttributeController {
     public ResponseEntity<Void> remove(@RequestBody SKUProductAttributeDto skuProductAttributeDto) {
         skuProductAttributeService.removeSKUProductAttribute(skuProductAttributeDto);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/getByProduct/{productId}")
+    public ResponseEntity<Iterable<SKUProductAttribute>> getByProduct(@PathVariable UUID productId) {
+        return new ResponseEntity<>(skuProductAttributeService.getSKUProductAttributesByProduct(productId), HttpStatus.OK);
     }
 }
